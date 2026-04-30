@@ -28,7 +28,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.markdown('<div class="custom-title">🧠 感情ラベリング</div>', unsafe_allow_html=True)
-st.write("今の気持ちをすべて選んでください。")
+st.write("今の気持ちをすべて選んでね")
 
 emotions = [
     "寂しい",
@@ -37,23 +37,24 @@ emotions = [
     "怒り",
     "虚しい",
     "苦しい",
+    "モヤモヤ",
 ]
 
 selected = st.multiselect(
-    "感情を選択",
+    "いまの感情を選択",
     emotions,
-    placeholder="タップして選んでください"
+    placeholder="タップして選んでね"
 )
 
 messages = [
-    "波はいつか凪になって落ち着くよ。",
-    "今はしんどいけど、あなたのペースで大丈夫だよ。",
-    "抱えすぎなくていいよ、少し休んでいいんだよ。",
+    "大波のあとは凪になって落ち着くよ",
+    "今はしんどいけど、自分のペースで大丈夫",
+    "抱えすぎないで、肩の力を抜いてみよ",
     "ちゃんと頑張ってるの、わかってるよ。",
     "あなたの気持ちはちゃんと意味があるよ。",
     "今は曇りでも、いつかちゃんと晴れるからね。",
-    "ひとりで全部やらなくていいよ。",
-    "今日は少し優しく自分を扱ってあげてね。",
+    "一回深呼吸して、間をあけてみよう",
+    "今日は優しく自分を扱ってあげてね",
 ]
 
 if selected:
@@ -61,7 +62,7 @@ if selected:
     st.markdown(
         f"""
         <div class="blue-box">
-            <div class="blue-title">🍀そっと寄り添うひとこと</div>
+            <div class="blue-title">🍀そっと寄り添うひとこと🍀</div>
             {message}
         </div>
         """,
