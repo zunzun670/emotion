@@ -3,7 +3,31 @@ import random
 
 st.set_page_config(page_title="感情ラベリング", page_icon="🧠", layout="centered")
 
-st.title("🧠 感情ラベリング")
+# タイトルのフォントサイズを調整
+st.markdown("""
+<style>
+.custom-title {
+    font-size: 1.8rem; /* 約 18pt 相当 */
+    font-weight: 700;
+}
+.blue-box {
+    padding: 18px;
+    border-radius: 10px;
+    background-color: #e8f4ff;
+    border: 1px solid #bcdfff;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: 20px; /* ← リセットボタンとの間に余白 */
+}
+.blue-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.15rem;
+}
+</style>
+""", unsafe_allow_html=True)
+
+st.markdown('<div class="custom-title">🧠 感情ラベリング</div>', unsafe_allow_html=True)
 st.write("今の気持ちをすべて選んでください。")
 
 emotions = [
@@ -21,7 +45,6 @@ selected = st.multiselect(
     placeholder="タップして選んでください"
 )
 
-# 優しい一言リスト
 messages = [
     "波はいつか凪になって落ち着くよ。",
     "今はしんどいけど、あなたのペースで大丈夫だよ。",
@@ -32,25 +55,6 @@ messages = [
     "ひとりで全部やらなくていいよ。",
     "今日は少し優しく自分を扱ってあげてね。",
 ]
-
-# CSS（青枠）
-st.markdown("""
-<style>
-.blue-box {
-    padding: 18px;
-    border-radius: 10px;
-    background-color: #e8f4ff;
-    border: 1px solid #bcdfff;
-    font-size: 1.1rem;
-    line-height: 1.6;
-}
-.blue-title {
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 1.15rem;
-}
-</style>
-""", unsafe_allow_html=True)
 
 if selected:
     message = random.choice(messages)
