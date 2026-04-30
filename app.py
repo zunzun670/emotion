@@ -33,22 +33,36 @@ messages = [
     "今日は少し優しく自分を扱ってあげてね。",
 ]
 
-# CSS（薄い青枠）
+# CSS（青枠）
 st.markdown("""
 <style>
 .blue-box {
-    padding: 16px;
-    border-radius: 8px;
+    padding: 18px;
+    border-radius: 10px;
     background-color: #e8f4ff;
     border: 1px solid #bcdfff;
     font-size: 1.1rem;
+    line-height: 1.6;
+}
+.blue-title {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 1.15rem;
 }
 </style>
 """, unsafe_allow_html=True)
 
 if selected:
     message = random.choice(messages)
-    st.markdown(f'<div class="blue-box">{message}</div>', unsafe_allow_html=True)
+    st.markdown(
+        f"""
+        <div class="blue-box">
+            <div class="blue-title">🍀そっと寄り添うひとこと</div>
+            {message}
+        </div>
+        """,
+        unsafe_allow_html=True
+    )
 
 if st.button("リセット"):
     st.experimental_rerun()
