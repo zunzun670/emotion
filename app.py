@@ -3,11 +3,10 @@ import random
 
 st.set_page_config(page_title="感情ラベリング", page_icon="🧠", layout="centered")
 
-# タイトルのフォントサイズを調整
 st.markdown("""
 <style>
 .custom-title {
-    font-size: 1.8rem; /* 約 18pt 相当 */
+    font-size: 1.8rem;
     font-weight: 700;
 }
 .blue-box {
@@ -17,7 +16,7 @@ st.markdown("""
     border: 1px solid #bcdfff;
     font-size: 1.1rem;
     line-height: 1.6;
-    margin-bottom: 20px; /* ← リセットボタンとの間に余白 */
+    margin-bottom: 20px;
 }
 .blue-title {
     font-weight: bold;
@@ -41,11 +40,20 @@ emotions = [
     "モヤモヤ",
 ]
 
+# セッション状態に選択を保持
+if "selected_emotions" not in st.session_state:
+    st.session_state.selected_emotions = []
+
 selected = st.multiselect(
     "いまの感情を選択",
     emotions,
-    placeholder="タップして選んでね"
+    default=st.session_state.selected_emotions,
+    placeholder="タップして選んでね",
+    key="emotion_multiselect",
 )
+
+# 毎回セッションに反映
+st.session_state.selected_emotions = selected
 
 messages = [
     "大波のあとは凪になって落ち着くよ",
@@ -70,5 +78,8 @@ if selected:
         unsafe_allow_html=True
     )
 
+# リセットボタン：選択を空にする
 if st.button("リセット"):
-    st.experimental_rerun()
+    st.session_state.selected_emotions = []
+    st.session_state.emotion_multiselect = []
+    st.rerun()
