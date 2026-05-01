@@ -1,7 +1,7 @@
 import streamlit as st
 import random
 
-st.set_page_config(page_title="感情ラベリング", page_icon="🧠", layout="centered")
+st.set_page_config(page_title="感情ラベリング", page_icon="💕", layout="centered")
 
 # --- CSS ---
 st.markdown("""
@@ -27,7 +27,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-st.markdown('<div class="custom-title">🧠 感情ラベリング</div>', unsafe_allow_html=True)
+st.markdown('<div class="custom-title">💕 感情ラベリング</div>', unsafe_allow_html=True)
 st.write("今の気持ちをすべて選んでね")
 
 emotions = [
